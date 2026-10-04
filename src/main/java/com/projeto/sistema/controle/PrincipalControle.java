@@ -12,4 +12,5 @@ public class PrincipalControle {
 		return "administrativo/home";
 	}
 	
+	
 }
