@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/3.1.3/css/dataTables.dataTables.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <title>Register Sales</title>
@@ -45,7 +46,7 @@
 
     <div class="container">
 
-        <table class="table">
+        <table class="table" id="tabela">
             <thead>
                 <tr>
                     <td>ID</td>
@@ -55,8 +56,8 @@
                 </tr>
             </thead>
 
-            <tbody th:each="estado: ${listaEstados}">
-                <tr>
+            <tbody>
+                <tr th:each="estado: ${listaEstados}">
                     <td th:text="${estado.id}"></td>
                     <td th:text="${estado.nome}"></td>
                     <td th:text="${estado.sigla}"></td>
@@ -68,14 +69,29 @@
             </tbody>
         </table>
 
-        <a href="/administrativo" class="btn btn-danger">Voltar</a>
+        <a href="/administrativo" class="btn btn-danger"> <i class="fa-solid fa-share"></i> Voltar</a>
+        <a href="/cadastroEstado"><li class="btn btn-success"><i class="fa-solid fa-floppy-disk"></i> Cadastrar</li></a>
 
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/4.0.0/jquery.js" integrity="sha512-jx7pKV1OCCwD8nJVKETycdimr+xPg3VCP0Wc5tX0RdpusPKEC72eB5cyqgT48K5HxbXvbxIc/oDVb70QMhSeLw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script src="https://cdn.datatables.net/3.1.3/js/dataTables.js"></script>
+	
+	<script>
+		$(document).ready(function () {
+	    	$('#tabela').DataTable();
+		});
+		
+		var table = new DataTable('#tabela', {
+		    language: {
+		        url: '//cdn.datatables.net/plug-ins/1.13.5/i18n/pt-BR.json',
+		    },
+		});
+		
+	</script>
 </body>
 
 </html>
